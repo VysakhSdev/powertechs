@@ -1,0 +1,6 @@
+{
+  "name": "Powertech Engineering Solution",
+  "description": "Powertech Engineering Solution LLP delivers end-to-end engineering solutions for reliable electrical systems: power distribution, HT/LT substation engineering, testing, and lifecycle maintenance.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
