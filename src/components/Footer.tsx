@@ -1,16 +1,13 @@
 import React from 'react';
 import { Mail, Phone, Award, ShieldAlert, Globe, MapPin } from 'lucide-react';
+import powerLogo from '../assets/images/PLOGO.png';
 
 // Custom Powertech Brand Logo Component for Dark Background
 const PowertechLogo = () => (
   <div className="flex items-center gap-3">
-    <svg className="w-10 h-10 shrink-0 filter drop-shadow-sm transition-transform duration-300 hover:scale-105" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="50" cy="50" r="46" fill="white" stroke="#F2A900" strokeWidth="5" />
-      {/* Bold Dark Blue "P" */}
-      <path d="M34 26 H56 C67 26, 74 32, 74 42 C74 52, 67 58, 56 58 H46 V76 H34 V26 Z" fill="#0B2240" />
-      {/* Golden lightning bolt inside the P's loop/counter */}
-      <path d="M52 32 L44 46 H51 L46 54 L56 41 H49 L52 32 Z" fill="#F2A900" />
-    </svg>
+    <div className="w-10 h-10 shrink-0 rounded-full border-[3px] border-[#F2A900] bg-white p-1 filter drop-shadow-sm transition-transform duration-300 hover:scale-105">
+      <img src={powerLogo} alt="Powertech logo" className="w-full h-full object-contain scale-150" />
+    </div>
     <div>
       <span className="font-sans font-extrabold text-lg md:text-xl tracking-tight block text-white">
         POWERTECH
@@ -205,11 +202,11 @@ export default function Footer({ setActivePage }: FooterProps) {
           <p className="font-sans text-slate-400">
             &copy; {currentYear} Powertech Engineering Solution LLP. All rights reserved.
           </p>
-          <div className="flex gap-6 text-slate-400 font-sans">
+          {/* <div className="flex gap-6 text-slate-400 font-sans">
             <span className="hover:text-white cursor-pointer transition-colors">Terms of Service</span>
             <span className="hover:text-white cursor-pointer transition-colors">Privacy Policy</span>
             <span className="hover:text-white cursor-pointer transition-colors">Statutory Compliance</span>
-          </div>
+          </div> */}
         </div>
 
       </div>

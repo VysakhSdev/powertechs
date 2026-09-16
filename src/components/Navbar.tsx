@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, PhoneCall, Award } from 'lucide-react';
+import powerLogo from '../assets/images/PLOGO.png';
 
 interface NavbarProps {
   activePage: 'home' | 'about' | 'services' | 'contact';
@@ -9,13 +10,9 @@ interface NavbarProps {
 // Custom Powertech Brand Logo Component as described by user logo details
 const PowertechLogo = ({ isDarkBg }: { isDarkBg: boolean }) => (
   <div className="flex items-center gap-3">
-    <svg className="w-10 h-10 shrink-0 filter drop-shadow-sm transition-transform duration-300 hover:scale-105" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="50" cy="50" r="46" fill="white" stroke={isDarkBg ? "#F2A900" : "#0B2240"} strokeWidth="5" />
-      {/* Bold Dark Blue "P" */}
-      <path d="M34 26 H56 C67 26, 74 32, 74 42 C74 52, 67 58, 56 58 H46 V76 H34 V26 Z" fill="#0B2240" />
-      {/* Golden lightning bolt inside the P's loop/counter */}
-      <path d="M52 32 L44 46 H51 L46 54 L56 41 H49 L52 32 Z" fill="#F2A900" />
-    </svg>
+    <div className="w-10 h-10 shrink-0 rounded-full border-[3px] border-[#F2A900] bg-white p-1 filter drop-shadow-sm transition-transform duration-300 hover:scale-105">
+      <img src={powerLogo} alt="Powertech logo" className="w-full h-full object-contain scale-150" />
+    </div>
     <div>
       <span className={`font-sans font-extrabold text-lg md:text-xl tracking-tight block transition-colors duration-300 ${isDarkBg ? 'text-white' : 'text-[#0B2240]'}`}>
         POWERTECH

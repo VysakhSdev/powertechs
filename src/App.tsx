@@ -20,12 +20,18 @@ export default function App() {
     recommendedServices: string[];
   } | null>(null);
 
+  // Keep the site on the home page only while in staging mode.
+  const stayOnHomePage = (page?: 'home' | 'about' | 'services' | 'contact') => {
+    setActivePage('home');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col justify-between selection:bg-[#F2A900] selection:text-[#0B2240]">
       {/* Navigation */}
       <Navbar
         activePage={activePage}
-        setActivePage={setActivePage}
+        setActivePage={stayOnHomePage}
       />
 
       {/* Main Page Area with Route Transitions */}
@@ -42,12 +48,10 @@ export default function App() {
               {/* Hero Banner */}
               <Hero
                 onServicesClick={() => {
-                  setActivePage('services');
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                  stayOnHomePage('home');
                 }}
                 onContactClick={() => {
-                  setActivePage('contact');
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                  stayOnHomePage('home');
                 }}
               />
 
@@ -60,12 +64,10 @@ export default function App() {
               {/* Previews with "Read More" / "View More" navigation */}
               <HomePreviews
                 onAboutClick={() => {
-                  setActivePage('about');
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                  stayOnHomePage('home');
                 }}
                 onServicesClick={() => {
-                  setActivePage('services');
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                  stayOnHomePage('home');
                 }}
               />
             </motion.div>
@@ -123,7 +125,7 @@ export default function App() {
       </main>
 
       {/* Modern Slate Footer with callback support */}
-      <Footer setActivePage={setActivePage} />
+      <Footer setActivePage={stayOnHomePage} />
     </div>
   );
 }
