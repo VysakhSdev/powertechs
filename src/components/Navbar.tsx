@@ -1,28 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, PhoneCall, Award } from 'lucide-react';
-import powerLogo from '../assets/images/PLOGO.png';
+import blueLogo from '../assets/images/blueLogo.jpg';
+import whiteLogo from '../assets/images/whiteLogo.png';
 
 interface NavbarProps {
   activePage: 'home' | 'about' | 'services' | 'contact';
   setActivePage: (page: 'home' | 'about' | 'services' | 'contact') => void;
 }
 
-// Custom Powertech Brand Logo Component as described by user logo details
-const PowertechLogo = ({ isDarkBg }: { isDarkBg: boolean }) => (
-  <div className="flex items-center gap-3">
-    <div className="w-10 h-10 shrink-0 rounded-full border-[3px] border-[#F2A900] bg-white p-1 filter drop-shadow-sm transition-transform duration-300 hover:scale-105">
-      <img src={powerLogo} alt="Powertech logo" className="w-full h-full object-contain scale-150" />
+// Keep the logo readable and visible without increasing the navbar height
+const PowertechLogo = ({ isDarkBg }: { isDarkBg: boolean }) => {
+  const logoSrc = isDarkBg ? whiteLogo : blueLogo;
+
+  return (
+    <div className="flex items-center">
+      <img
+        src={logoSrc}
+        alt="Powertech logo"
+        className="h-15 w-auto object-contain transition-all duration-300 md:h-15"
+      />
     </div>
-    <div>
-      <span className={`font-sans font-extrabold text-lg md:text-xl tracking-tight block transition-colors duration-300 ${isDarkBg ? 'text-white' : 'text-[#0B2240]'}`}>
-        POWERTECH
-      </span>
-      <span className={`font-sans text-[8px] uppercase tracking-[0.25em] block -mt-1 font-bold transition-colors duration-300 ${isDarkBg ? 'text-slate-300' : 'text-slate-500'}`}>
-        Engineering Solution LLP
-      </span>
-    </div>
-  </div>
-);
+  );
+};
 
 export default function Navbar({
   activePage,
@@ -60,7 +59,7 @@ export default function Navbar({
     }
     return isScrolled
       ? 'font-sans text-sm font-semibold transition-colors cursor-pointer text-slate-100 hover:text-[#F2A900]'
-      : 'font-sans text-sm font-semibold transition-colors cursor-pointer text-[#0B2240]/90 hover:text-[#F2A900]';
+      : 'font-sans text-sm font-semibold transition-colors cursor-pointer text-[#0B2C59] hover:text-[#F2A900]';
   };
 
   const getMobileLinkClass = (page: 'home' | 'about' | 'services' | 'contact') => {
@@ -70,7 +69,7 @@ export default function Navbar({
     }
     return isScrolled
       ? `font-sans text-left text-sm font-bold transition-colors py-2 border-b text-slate-200 hover:text-[#F2A900] border-slate-800`
-      : `font-sans text-left text-sm font-bold transition-colors py-2 border-b text-[#0B2240] hover:text-[#F2A900] border-slate-100`;
+      : `font-sans text-left text-sm font-bold transition-colors py-2 border-b text-[#0B2C59] hover:text-[#F2A900] border-slate-100`;
   };
 
   return (
@@ -78,8 +77,8 @@ export default function Navbar({
       id="main-navbar"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#0B2240]/95 backdrop-blur-md shadow-xl border-b border-[#0B2240]/25 py-3'
-          : 'bg-white/95 backdrop-blur-md shadow-md border-b border-slate-100 py-4'
+          ? 'bg-[#0B2C59]/95 backdrop-blur-md shadow-xl border-b border-[#0B2C59]/25 py-3'
+          : 'bg-white/95 backdrop-blur-md shadow-md border-b border-slate-100 py-3'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -107,13 +106,13 @@ export default function Navbar({
               About Us
             </button>
             <button
-              onClick={() => handlePageChange('services')}
+              // onClick={() => handlePageChange('services')}
               className={getLinkClass('services')}
             >
               Services
             </button>
             <button
-              onClick={() => handlePageChange('contact')}
+              // onClick={() => handlePageChange('contact')}
               className={getLinkClass('contact')}
             >
               Contact Us
@@ -123,18 +122,18 @@ export default function Navbar({
           {/* CTA Button */}
           <div className="hidden md:flex items-center gap-4">
             <div className={`flex items-center gap-2 text-xs border-r pr-4 ${isScrolled ? 'text-slate-300 border-slate-700' : 'text-slate-500 border-slate-200'}`}>
-              <Award className={`w-4 h-4 ${isScrolled ? 'text-[#F2A900]' : 'text-[#0B2240]'}`} />
+              <Award className={`w-4 h-4 ${isScrolled ? 'text-[#F2A900]' : 'text-[#0B2C59]'}`} />
               <span className="font-sans font-bold tracking-wider uppercase text-[9px]">
                 Powering Reliability
               </span>
             </div>
             <button
-              onClick={() => handlePageChange('contact')}
+              // onClick={() => handlePageChange('contact')}
               id="cta-consult-btn"
               className={`flex items-center gap-2 px-4 py-2.5 rounded-lg font-sans text-xs font-bold tracking-wide uppercase transition-all shadow-md active:translate-y-[1px] cursor-pointer ${
                 isScrolled
-                  ? 'bg-[#F2A900] hover:bg-[#F2A900]/90 text-[#0B2240] shadow-[#F2A900]/10 hover:-translate-y-[1px]'
-                  : 'bg-[#0B2240] hover:bg-[#0B2240]/90 text-white shadow-slate-900/10 hover:-translate-y-[1px]'
+                  ? 'bg-[#F2A900] hover:bg-[#F2A900]/90 text-[#0B2C59] shadow-[#F2A900]/10 hover:-translate-y-[1px]'
+                  : 'bg-[#0B2C59] hover:bg-[#0B2C59]/90 text-white shadow-slate-900/10 hover:-translate-y-[1px]'
               }`}
             >
               <PhoneCall className="w-3.5 h-3.5" />
@@ -149,7 +148,7 @@ export default function Navbar({
               className={`p-2 rounded-lg border transition-colors ${
                 isScrolled 
                   ? 'text-slate-200 hover:text-[#F2A900] border-slate-700 bg-slate-900/45' 
-                  : 'text-[#0B2240] hover:text-[#F2A900] border-slate-200 bg-slate-100/50'
+              : 'text-[#0B2C59] hover:text-[#F2A900] border-slate-200 bg-slate-100/50'
               }`}
               aria-label="Toggle Menu"
             >
@@ -161,7 +160,7 @@ export default function Navbar({
 
       {/* Mobile Drawer */}
       {isOpen && (
-        <div className={`md:hidden shadow-2xl py-5 px-6 transition-all duration-300 ${isScrolled ? 'bg-[#0B2240]' : 'bg-white border-t border-slate-100'}`}>
+        <div className={`md:hidden shadow-2xl py-5 px-6 transition-all duration-300 ${isScrolled ? 'bg-[#0B2C59]' : 'bg-white border-t border-slate-100'}`}>
           <div className="flex flex-col gap-4">
             <button
               onClick={() => handleLinkClick('home')}
@@ -194,7 +193,7 @@ export default function Navbar({
               </div>
               <button
                 onClick={() => handleLinkClick('contact')}
-                className="flex items-center justify-center gap-2 w-full py-3 rounded-lg bg-[#F2A900] text-[#0B2240] font-sans text-sm font-bold shadow-md hover:bg-[#F2A900]/90 transition-colors"
+                className="flex items-center justify-center gap-2 w-full py-3 rounded-lg bg-[#F2A900] text-[#0B2C59] font-sans text-sm font-bold shadow-md hover:bg-[#F2A900]/90 transition-colors"
               >
                 <PhoneCall className="w-4 h-4" />
                 <span>Get Consultation</span>

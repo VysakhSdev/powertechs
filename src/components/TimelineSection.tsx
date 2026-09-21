@@ -30,7 +30,7 @@ export default function TimelineSection({ id = 'timeline-section' }: TimelineSec
   };
 
   return (
-    <section id={id} className="py-20 bg-[#0B2240] text-white relative overflow-hidden scroll-mt-20">
+    <section id={id} className="py-20 bg-[#0B2C59] text-white relative overflow-hidden scroll-mt-20">
       {/* Background Graphic Grid */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#132f54_1px,transparent_1px),linear-gradient(to_bottom,#132f54_1px,transparent_1px)] bg-[size:3rem_3rem] opacity-30" />
       <div className="absolute -top-40 -left-40 w-96 h-96 bg-[#F2A900]/10 rounded-full blur-[120px] pointer-events-none" />
@@ -54,8 +54,8 @@ export default function TimelineSection({ id = 'timeline-section' }: TimelineSec
 
         {/* Closing Value Prop / Prominent Quote Block */}
         <div className="max-w-4xl mx-auto bg-[#071930] border border-slate-800 rounded-3xl p-6 md:p-8 mb-20 shadow-2xl relative">
-          <div className="absolute -top-4 left-6 bg-[#F2A900] text-[#0B2240] p-2 rounded-xl shadow-lg">
-            <Quote className="w-5 h-5 fill-[#0B2240]" />
+          <div className="absolute -top-4 left-6 bg-[#F2A900] text-[#0B2C59] p-2 rounded-xl shadow-lg">
+            <Quote className="w-5 h-5 fill-[#0B2C59]" />
           </div>
           <p className="font-sans font-bold text-base sm:text-lg md:text-xl text-slate-100 italic leading-relaxed pt-2 pl-4 border-l-2 border-[#F2A900]/50">
             "We provide complete services from concept, design, procurement, installation, testing and commissioning to operation, maintenance and lifecycle support, ensuring reliable, safe and sustainable electrical systems."

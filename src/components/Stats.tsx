@@ -40,7 +40,7 @@ export default function Stats() {
     <div id="stats-section" className="relative z-10 -mt-10 px-4 sm:px-6 lg:px-8 space-y-16">
       
       {/* 4 CORE PILLARS BANNER (Dark Blue block from the brochure) */}
-      <div className="max-w-7xl mx-auto bg-[#0B2240] rounded-3xl shadow-2xl p-8 border border-slate-800 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto bg-[#0B2C59] rounded-3xl shadow-2xl p-8 border border-slate-800 relative overflow-hidden">
         {/* Subtle decorative grid lines */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:3rem_3rem]" />
         
@@ -74,11 +74,11 @@ export default function Stats() {
       {/* WHY CHOOSE US? SECTION */}
       <div className="max-w-7xl mx-auto">
         <div className="text-center space-y-4 mb-10">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-[#0B2240] font-sans text-xs font-black tracking-wider uppercase">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-[#0B2C59] font-sans text-xs font-black tracking-wider uppercase">
             <Star className="w-3.5 h-3.5 text-[#F2A900] fill-[#F2A900]" />
             <span>Why Choose Us?</span>
           </div>
-          <h3 className="font-sans font-black text-2xl sm:text-3xl text-[#0B2240] tracking-tight">
+          <h3 className="font-sans font-black text-2xl sm:text-3xl text-[#0B2C59] tracking-tight">
             The Professional Choice for High-Voltage Engineering
           </h3>
           <p className="font-sans text-slate-500 text-xs sm:text-sm max-w-2xl mx-auto">
@@ -96,7 +96,7 @@ export default function Stats() {
                 <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-100 w-fit">
                   {getWhyIcon(index)}
                 </div>
-                <h4 className="font-sans font-extrabold text-xs text-[#0B2240] leading-snug tracking-tight">
+                <h4 className="font-sans font-extrabold text-xs text-[#0B2C59] leading-snug tracking-tight">
                   {item.title}
                 </h4>
               </div>

@@ -27,11 +27,11 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col justify-between selection:bg-[#F2A900] selection:text-[#0B2240]">
+    <div className="min-h-screen bg-slate-50 flex flex-col justify-between selection:bg-[#F2A900] selection:text-[#0B2C59]">
       {/* Navigation */}
       <Navbar
         activePage={activePage}
-        setActivePage={stayOnHomePage}
+        setActivePage={setActivePage}
       />
 
       {/* Main Page Area with Route Transitions */}
@@ -46,14 +46,7 @@ export default function App() {
               transition={{ duration: 0.25, ease: 'easeOut' }}
             >
               {/* Hero Banner */}
-              <Hero
-                onServicesClick={() => {
-                  stayOnHomePage('home');
-                }}
-                onContactClick={() => {
-                  stayOnHomePage('home');
-                }}
-              />
+              <Hero />
 
               {/* Trust Stats Bar */}
               <Stats />
@@ -64,10 +57,7 @@ export default function App() {
               {/* Previews with "Read More" / "View More" navigation */}
               <HomePreviews
                 onAboutClick={() => {
-                  stayOnHomePage('home');
-                }}
-                onServicesClick={() => {
-                  stayOnHomePage('home');
+                  setActivePage('about');
                 }}
               />
             </motion.div>
@@ -125,7 +115,7 @@ export default function App() {
       </main>
 
       {/* Modern Slate Footer with callback support */}
-      <Footer setActivePage={stayOnHomePage} />
+      <Footer setActivePage={setActivePage} />
     </div>
   );
 }

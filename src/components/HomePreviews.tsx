@@ -5,13 +5,12 @@ import { imgSubstationYard } from '../assets/images';
 
 interface HomePreviewsProps {
   onAboutClick: () => void;
-  onServicesClick: () => void;
+  onServicesClick?: () => void;
   onContactClick?: () => void;
 }
 
 export default function HomePreviews({
   onAboutClick,
-  onServicesClick,
 }: HomePreviewsProps) {
   return (
     <div className="space-y-24 pt-20 pb-16 bg-white">
@@ -25,7 +24,7 @@ export default function HomePreviews({
             <span className="font-sans text-xs font-black text-[#F2A900] bg-[#F2A900]/10 border border-[#F2A900]/20 px-3 py-1.5 rounded-full uppercase tracking-widest inline-block">
               Corporate Overview
             </span>
-            <h2 className="font-sans font-black text-3xl sm:text-4xl text-[#0B2240] tracking-tight">
+            <h2 className="font-sans font-black text-3xl sm:text-4xl text-[#0B2C59] tracking-tight">
               A Decade of Power Engineering Integrity
             </h2>
             <div className="h-1 w-16 bg-[#F2A900]" />
@@ -39,18 +38,18 @@ export default function HomePreviews({
             <div className="pt-2 flex flex-col sm:flex-row gap-4">
               <div className="flex items-center gap-3 bg-slate-50 p-3 rounded-xl border border-slate-200">
                 <ShieldCheck className="w-5 h-5 text-emerald-500 shrink-0" />
-                <span className="font-sans text-xs font-bold text-[#0B2240]">Zero-Accident Protocol</span>
+                <span className="font-sans text-xs font-bold text-[#0B2C59]">Zero-Accident Protocol</span>
               </div>
               <div className="flex items-center gap-3 bg-slate-50 p-3 rounded-xl border border-slate-200">
                 <Award className="w-5 h-5 text-[#F2A900]" />
-                <span className="font-sans text-xs font-bold text-[#0B2240]">Class-A Licensed Contractors</span>
+                <span className="font-sans text-xs font-bold text-[#0B2C59]">Class-A Licensed Contractors</span>
               </div>
             </div>
 
             <div className="pt-4">
               <button
                 onClick={onAboutClick}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#0B2240] hover:bg-[#0B2240]/90 text-white font-sans font-black text-xs uppercase tracking-wider transition-all hover:translate-x-1 cursor-pointer"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#0B2C59] hover:bg-[#0B2C59]/90 text-white font-sans font-black text-xs uppercase tracking-wider transition-all hover:translate-x-1 cursor-pointer"
               >
                 <span>Read More About Us</span>
                 <ArrowRight className="w-4 h-4 stroke-[2.5] text-[#F2A900]" />
@@ -67,7 +66,7 @@ export default function HomePreviews({
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0B2240]/80 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0B2C59]/80 via-transparent to-transparent pointer-events-none" />
               <div className="absolute bottom-4 left-4 right-4 text-white">
                 <span className="text-[10px] uppercase font-bold tracking-widest text-slate-300">Integrity &amp; Quality</span>
                 <p className="text-sm font-extrabold text-white">CEA Certified Electrical Operations</p>
@@ -75,7 +74,7 @@ export default function HomePreviews({
             </div>
 
             <div className="p-6 bg-slate-50 rounded-2xl border border-slate-200 shadow-sm space-y-4">
-              <h3 className="font-sans font-black text-sm text-[#0B2240] tracking-tight uppercase tracking-wider">
+              <h3 className="font-sans font-black text-sm text-[#0B2C59] tracking-tight uppercase tracking-wider">
                 Why Powertech?
               </h3>
               <ul className="space-y-2.5 font-sans text-xs text-slate-600">
@@ -107,7 +106,7 @@ export default function HomePreviews({
             <span className="font-sans text-xs text-[#F2A900] font-black uppercase tracking-widest bg-[#F2A900]/10 border border-[#F2A900]/20 px-3.5 py-1.5 rounded-full inline-block">
               Core Specialties
             </span>
-            <h2 className="font-sans font-black text-3xl sm:text-4xl text-[#0B2240] tracking-tight">
+            <h2 className="font-sans font-black text-3xl sm:text-4xl text-[#0B2C59] tracking-tight">
               High-Performance Engineering Services
             </h2>
             <p className="font-sans text-slate-600 text-sm">
@@ -119,11 +118,11 @@ export default function HomePreviews({
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             
             {/* Card 1 */}
-            <div className="bg-white p-6 rounded-2xl border border-slate-200 hover:border-[#0B2240]/15 hover:shadow-xl transition-all duration-300 space-y-4">
-              <div className="p-3 bg-[#0B2240] text-white rounded-xl w-fit">
+            <div className="bg-white p-6 rounded-2xl border border-slate-200 hover:border-[#0B2C59]/15 hover:shadow-xl transition-all duration-300 space-y-4">
+              <div className="p-3 bg-[#0B2C59] text-white rounded-xl w-fit">
                 <Activity className="w-5 h-5 text-[#F2A900]" />
               </div>
-              <h3 className="font-sans font-black text-base text-[#0B2240] tracking-tight">
+              <h3 className="font-sans font-black text-base text-[#0B2C59] tracking-tight">
                 Design & Grid Consultancy
               </h3>
               <p className="font-sans text-xs text-slate-500 leading-relaxed">
@@ -132,11 +131,11 @@ export default function HomePreviews({
             </div>
 
             {/* Card 2 */}
-            <div className="bg-white p-6 rounded-2xl border border-slate-200 hover:border-[#0B2240]/15 hover:shadow-xl transition-all duration-300 space-y-4">
-              <div className="p-3 bg-[#0B2240] text-white rounded-xl w-fit">
+            <div className="bg-white p-6 rounded-2xl border border-slate-200 hover:border-[#0B2C59]/15 hover:shadow-xl transition-all duration-300 space-y-4">
+              <div className="p-3 bg-[#0B2C59] text-white rounded-xl w-fit">
                 <Power className="w-5 h-5 text-[#F2A900]" />
               </div>
-              <h3 className="font-sans font-black text-base text-[#0B2240] tracking-tight">
+              <h3 className="font-sans font-black text-base text-[#0B2C59] tracking-tight">
                 Substation Engineering
               </h3>
               <p className="font-sans text-xs text-slate-500 leading-relaxed">
@@ -145,11 +144,11 @@ export default function HomePreviews({
             </div>
 
             {/* Card 3 */}
-            <div className="bg-white p-6 rounded-2xl border border-slate-200 hover:border-[#0B2240]/15 hover:shadow-xl transition-all duration-300 space-y-4">
-              <div className="p-3 bg-[#0B2240] text-white rounded-xl w-fit">
+            <div className="bg-white p-6 rounded-2xl border border-slate-200 hover:border-[#0B2C59]/15 hover:shadow-xl transition-all duration-300 space-y-4">
+              <div className="p-3 bg-[#0B2C59] text-white rounded-xl w-fit">
                 <Zap className="w-5 h-5 text-[#F2A900]" />
               </div>
-              <h3 className="font-sans font-black text-base text-[#0B2240] tracking-tight">
+              <h3 className="font-sans font-black text-base text-[#0B2C59] tracking-tight">
                 Power Quality & Harmonics
               </h3>
               <p className="font-sans text-xs text-slate-500 leading-relaxed">
@@ -158,11 +157,11 @@ export default function HomePreviews({
             </div>
 
             {/* Card 4 */}
-            <div className="bg-white p-6 rounded-2xl border border-slate-200 hover:border-[#0B2240]/15 hover:shadow-xl transition-all duration-300 space-y-4">
-              <div className="p-3 bg-[#0B2240] text-white rounded-xl w-fit">
+            <div className="bg-white p-6 rounded-2xl border border-slate-200 hover:border-[#0B2C59]/15 hover:shadow-xl transition-all duration-300 space-y-4">
+              <div className="p-3 bg-[#0B2C59] text-white rounded-xl w-fit">
                 <Wrench className="w-5 h-5 text-[#F2A900]" />
               </div>
-              <h3 className="font-sans font-black text-base text-[#0B2240] tracking-tight">
+              <h3 className="font-sans font-black text-base text-[#0B2C59] tracking-tight">
                 Annual Maintenance (AMC)
               </h3>
               <p className="font-sans text-xs text-slate-500 leading-relaxed">
@@ -172,16 +171,6 @@ export default function HomePreviews({
 
           </div>
 
-          {/* CTA View More Services */}
-          <div className="text-center pt-4">
-            <button
-              onClick={onServicesClick}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#0B2240] hover:bg-[#0B2240]/90 text-white font-sans font-black text-xs uppercase tracking-wider transition-all hover:translate-x-1 cursor-pointer"
-            >
-              <span>View More Services</span>
-              <ArrowRight className="w-4 h-4 stroke-[2.5] text-[#F2A900]" />
-            </button>
-          </div>
 
         </div>
       </section>

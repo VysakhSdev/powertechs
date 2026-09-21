@@ -105,7 +105,7 @@ export default function ContactSection({ id = 'contact-section', selectedPlanDat
               <span className="font-sans text-xs text-[#F2A900] font-black uppercase tracking-widest bg-[#F2A900]/10 border border-[#F2A900]/20 px-3.5 py-1.5 rounded-full inline-block">
                 Partner with us
               </span>
-              <h2 className="font-sans font-black text-3xl sm:text-4xl text-[#0B2240] tracking-tight">
+              <h2 className="font-sans font-black text-3xl sm:text-4xl text-[#0B2C59] tracking-tight">
                 Request an Engineering Consultation
               </h2>
               <p className="font-sans text-slate-600 text-sm sm:text-base leading-relaxed">
@@ -130,7 +130,7 @@ export default function ContactSection({ id = 'contact-section', selectedPlanDat
 
             {/* Direct Contact info */}
             <div className="space-y-4 bg-slate-50 p-6 rounded-2xl border border-slate-200">
-              <p className="font-sans text-[11px] font-black text-[#0B2240]/60 uppercase tracking-widest">
+              <p className="font-sans text-[11px] font-black text-[#0B2C59]/60 uppercase tracking-widest">
                 Corporate Office
               </p>
               
@@ -138,7 +138,7 @@ export default function ContactSection({ id = 'contact-section', selectedPlanDat
                 <div className="flex items-start gap-3.5">
                   <MapPin className="w-5 h-5 text-[#F2A900] shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="font-sans font-black text-xs text-[#0B2240]">Registered Office Address</h4>
+                    <h4 className="font-sans font-black text-xs text-[#0B2C59]">Registered Office Address</h4>
                     <p className="font-sans text-xs text-slate-600 mt-1 leading-relaxed">
                       <strong>Powertech Engineering Solution LLP</strong><br />
                       B.No - 23/112/C7, Paul's Corner Building<br />
@@ -151,7 +151,7 @@ export default function ContactSection({ id = 'contact-section', selectedPlanDat
                 <div className="flex items-start gap-3.5">
                   <Phone className="w-5 h-5 text-[#F2A900] shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="font-sans font-black text-xs text-[#0B2240]">Support & Contact Numbers</h4>
+                    <h4 className="font-sans font-black text-xs text-[#0B2C59]">Support & Contact Numbers</h4>
                     <div className="font-sans text-xs text-slate-600 mt-1 space-y-0.5">
                       <p>+91 98463 41472</p>
                       <p>+91 94463 67886</p>
@@ -163,11 +163,11 @@ export default function ContactSection({ id = 'contact-section', selectedPlanDat
                 <div className="flex items-start gap-3.5">
                   <Mail className="w-5 h-5 text-[#F2A900] shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="font-sans font-black text-xs text-[#0B2240]">Email & Official Website</h4>
+                    <h4 className="font-sans font-black text-xs text-[#0B2C59]">Email & Official Website</h4>
                     <p className="font-sans text-xs text-slate-600 mt-1">
                       info@powertecheng.co.in
                     </p>
-                    <p className="font-sans text-xs text-[#0B2240] font-semibold mt-0.5">
+                    <p className="font-sans text-xs text-[#0B2C59] font-semibold mt-0.5">
                       <a href="https://www.powertecheng.co.in" target="_blank" rel="noreferrer" className="hover:text-[#F2A900] underline">
                         www.powertecheng.co.in
                       </a>
@@ -182,7 +182,7 @@ export default function ContactSection({ id = 'contact-section', selectedPlanDat
               <div className="p-4 border border-slate-200 rounded-2xl bg-slate-50/50 flex items-start gap-2.5">
                 <BadgeCheck className="w-5 h-5 text-[#F2A900] shrink-0" />
                 <div>
-                  <h5 className="font-sans font-bold text-xs text-[#0B2240]">Certified</h5>
+                  <h5 className="font-sans font-bold text-xs text-[#0B2C59]">Certified</h5>
                   <p className="font-sans text-[10px] text-slate-500 mt-0.5">CEA Licensed Grid Engineers</p>
                 </div>
               </div>
@@ -190,7 +190,7 @@ export default function ContactSection({ id = 'contact-section', selectedPlanDat
               <div className="p-4 border border-slate-200 rounded-2xl bg-slate-50/50 flex items-start gap-2.5">
                 <Clock className="w-5 h-5 text-[#F2A900] shrink-0" />
                 <div>
-                  <h5 className="font-sans font-bold text-xs text-[#0B2240]">Turnaround</h5>
+                  <h5 className="font-sans font-bold text-xs text-[#0B2C59]">Turnaround</h5>
                   <p className="font-sans text-[10px] text-slate-500 mt-0.5">Scoping Call in 2 Hours</p>
                 </div>
               </div>
@@ -207,11 +207,11 @@ export default function ContactSection({ id = 'contact-section', selectedPlanDat
                 <div className="mb-6 p-4 rounded-xl bg-[#F2A900]/10 border border-[#F2A900]/30 flex items-center justify-between text-xs text-slate-800">
                   <div className="flex items-center gap-2">
                     <CheckCircle className="w-5 h-5 text-[#F2A900]" />
-                    <span className="font-sans font-extrabold text-[#0B2240]">
+                    <span className="font-sans font-extrabold text-[#0B2C59]">
                       Architect blueprint synchronized!
                     </span>
                   </div>
-                  <span className="font-sans text-[9px] font-black text-white bg-[#0B2240] px-2.5 py-1 rounded-full uppercase tracking-wider">
+                  <span className="font-sans text-[9px] font-black text-white bg-[#0B2C59] px-2.5 py-1 rounded-full uppercase tracking-wider">
                     Active
                   </span>
                 </div>
@@ -232,7 +232,7 @@ export default function ContactSection({ id = 'contact-section', selectedPlanDat
                         value={formData.fullName}
                         onChange={handleChange}
                         placeholder="John Doe"
-                        className={`w-full p-3 rounded-xl border bg-white font-sans text-xs focus:ring-4 focus:ring-[#0B2240]/5 focus:border-[#0B2240] outline-none transition-all ${
+                        className={`w-full p-3 rounded-xl border bg-white font-sans text-xs focus:ring-4 focus:ring-[#0B2C59]/5 focus:border-[#0B2C59] outline-none transition-all ${
                           errors.fullName ? 'border-red-500' : 'border-slate-200'
                         }`}
                       />
@@ -252,7 +252,7 @@ export default function ContactSection({ id = 'contact-section', selectedPlanDat
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="john@company.com"
-                        className={`w-full p-3 rounded-xl border bg-white font-sans text-xs focus:ring-4 focus:ring-[#0B2240]/5 focus:border-[#0B2240] outline-none transition-all ${
+                        className={`w-full p-3 rounded-xl border bg-white font-sans text-xs focus:ring-4 focus:ring-[#0B2C59]/5 focus:border-[#0B2C59] outline-none transition-all ${
                           errors.email ? 'border-red-500' : 'border-slate-200'
                         }`}
                       />
@@ -274,7 +274,7 @@ export default function ContactSection({ id = 'contact-section', selectedPlanDat
                         value={formData.phone}
                         onChange={handleChange}
                         placeholder="+91 XXXXX XXXXX"
-                        className={`w-full p-3 rounded-xl border bg-white font-sans text-xs focus:ring-4 focus:ring-[#0B2240]/5 focus:border-[#0B2240] outline-none transition-all ${
+                        className={`w-full p-3 rounded-xl border bg-white font-sans text-xs focus:ring-4 focus:ring-[#0B2C59]/5 focus:border-[#0B2C59] outline-none transition-all ${
                           errors.phone ? 'border-red-500' : 'border-slate-200'
                         }`}
                       />
@@ -294,7 +294,7 @@ export default function ContactSection({ id = 'contact-section', selectedPlanDat
                         value={formData.companyName}
                         onChange={handleChange}
                         placeholder="Industrial Enterprises Ltd."
-                        className={`w-full p-3 rounded-xl border bg-white font-sans text-xs focus:ring-4 focus:ring-[#0B2240]/5 focus:border-[#0B2240] outline-none transition-all ${
+                        className={`w-full p-3 rounded-xl border bg-white font-sans text-xs focus:ring-4 focus:ring-[#0B2C59]/5 focus:border-[#0B2C59] outline-none transition-all ${
                           errors.companyName ? 'border-red-500' : 'border-slate-200'
                         }`}
                       />
@@ -314,7 +314,7 @@ export default function ContactSection({ id = 'contact-section', selectedPlanDat
                         name="sector"
                         value={formData.sector}
                         onChange={handleChange}
-                        className="w-full p-3 rounded-xl border border-slate-200 bg-white font-sans text-xs focus:ring-4 focus:ring-[#0B2240]/5 focus:border-[#0B2240] outline-none transition-all cursor-pointer"
+                        className="w-full p-3 rounded-xl border border-slate-200 bg-white font-sans text-xs focus:ring-4 focus:ring-[#0B2C59]/5 focus:border-[#0B2C59] outline-none transition-all cursor-pointer"
                       >
                         <option>Industrial / Manufacturing</option>
                         <option>Utility / Grid Operator</option>
@@ -332,7 +332,7 @@ export default function ContactSection({ id = 'contact-section', selectedPlanDat
                         name="voltage"
                         value={formData.voltage}
                         onChange={handleChange}
-                        className="w-full p-3 rounded-xl border border-slate-200 bg-white font-sans text-xs focus:ring-4 focus:ring-[#0B2240]/5 focus:border-[#0B2240] outline-none transition-all cursor-pointer"
+                        className="w-full p-3 rounded-xl border border-slate-200 bg-white font-sans text-xs focus:ring-4 focus:ring-[#0B2C59]/5 focus:border-[#0B2C59] outline-none transition-all cursor-pointer"
                       >
                         <option>Extra High Voltage</option>
                         <option>High Tension</option>
@@ -349,7 +349,7 @@ export default function ContactSection({ id = 'contact-section', selectedPlanDat
                         name="focus"
                         value={formData.focus}
                         onChange={handleChange}
-                        className="w-full p-3 rounded-xl border border-slate-200 bg-white font-sans text-xs focus:ring-4 focus:ring-[#0B2240]/5 focus:border-[#0B2240] outline-none transition-all cursor-pointer"
+                        className="w-full p-3 rounded-xl border border-slate-200 bg-white font-sans text-xs focus:ring-4 focus:ring-[#0B2C59]/5 focus:border-[#0B2C59] outline-none transition-all cursor-pointer"
                       >
                         <option>Concept Design & Approval</option>
                         <option>Safety Audits & Compliance</option>
@@ -370,7 +370,7 @@ export default function ContactSection({ id = 'contact-section', selectedPlanDat
                       onChange={handleChange}
                       rows={4}
                       placeholder="List approximate transformer capacity (e.g., 2 MVA), existing issues (e.g., thermal hotspots, harmonic trippings), or regulatory permits sought..."
-                      className="w-full p-3 rounded-xl border border-slate-200 bg-white font-sans text-xs focus:ring-4 focus:ring-[#0B2240]/5 focus:border-[#0B2240] outline-none transition-all resize-none"
+                      className="w-full p-3 rounded-xl border border-slate-200 bg-white font-sans text-xs focus:ring-4 focus:ring-[#0B2C59]/5 focus:border-[#0B2C59] outline-none transition-all resize-none"
                     />
                   </div>
 
@@ -383,7 +383,7 @@ export default function ContactSection({ id = 'contact-section', selectedPlanDat
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl bg-[#0B2240] hover:bg-[#0B2240]/90 text-white font-sans font-bold text-xs uppercase tracking-wider shadow-md transition-all disabled:opacity-50 hover:translate-y-[-1px] active:translate-y-[1px] cursor-pointer"
+                    className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl bg-[#0B2C59] hover:bg-[#0B2C59]/90 text-white font-sans font-bold text-xs uppercase tracking-wider shadow-md transition-all disabled:opacity-50 hover:translate-y-[-1px] active:translate-y-[1px] cursor-pointer"
                   >
                     {isSubmitting ? (
                       <>
@@ -411,7 +411,7 @@ export default function ContactSection({ id = 'contact-section', selectedPlanDat
                   </div>
                   
                   <div className="space-y-2">
-                    <h3 className="font-sans font-black text-2xl text-[#0B2240] tracking-tight">
+                    <h3 className="font-sans font-black text-2xl text-[#0B2C59] tracking-tight">
                       Inquiry Scoping Completed
                     </h3>
                     <p className="font-sans text-xs text-slate-600 max-w-md mx-auto leading-relaxed">
@@ -423,13 +423,13 @@ export default function ContactSection({ id = 'contact-section', selectedPlanDat
                   <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5 max-w-md mx-auto text-left space-y-3 shadow-inner">
                     <div className="flex items-center justify-between text-[11px] font-mono text-slate-500 pb-2 border-b border-slate-200">
                       <span>Ref Ticket ID:</span>
-                      <span className="font-black text-[#0B2240]">#PT-{(Math.floor(Math.random() * 9000) + 1000).toString()}</span>
+                      <span className="font-black text-[#0B2C59]">#PT-{(Math.floor(Math.random() * 9000) + 1000).toString()}</span>
                     </div>
                     
                     <div className="grid grid-cols-2 gap-y-3 gap-x-2 text-xs">
                       <div>
                         <span className="text-slate-500 block text-[10px] uppercase font-bold">Department:</span>
-                        <span className="font-extrabold text-[#0B2240]">{formData.focus}</span>
+                        <span className="font-extrabold text-[#0B2C59]">{formData.focus}</span>
                       </div>
                       <div>
                         <span className="text-slate-500 block text-[10px] uppercase font-bold">Corporate Email:</span>
@@ -441,7 +441,7 @@ export default function ContactSection({ id = 'contact-section', selectedPlanDat
                       </div>
                       <div>
                         <span className="text-slate-500 block text-[10px] uppercase font-bold">Response SLA:</span>
-                        <span className="font-mono font-extrabold text-[#F2A900] bg-[#0B2240] px-2 py-0.5 rounded-full inline-block text-[10px]">2 Hour Callback</span>
+                        <span className="font-mono font-extrabold text-[#F2A900] bg-[#0B2C59] px-2 py-0.5 rounded-full inline-block text-[10px]">2 Hour Callback</span>
                       </div>
                     </div>
                   </div>
@@ -465,7 +465,7 @@ export default function ContactSection({ id = 'contact-section', selectedPlanDat
                         servicesListText: ''
                       });
                     }}
-                    className="px-6 py-2.5 rounded-xl bg-[#0B2240] hover:bg-[#0B2240]/90 text-white font-sans text-xs font-bold uppercase tracking-wider transition-all cursor-pointer"
+                    className="px-6 py-2.5 rounded-xl bg-[#0B2C59] hover:bg-[#0B2C59]/90 text-white font-sans text-xs font-bold uppercase tracking-wider transition-all cursor-pointer"
                   >
                     Submit Another Scoping File
                   </button>

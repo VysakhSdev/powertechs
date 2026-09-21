@@ -31,7 +31,7 @@ export default function IndustriesServed() {
           <span className="font-sans text-xs font-black text-[#F2A900] uppercase tracking-widest block">
             Target Sectors
           </span>
-          <h3 className="font-sans font-black text-2xl sm:text-3xl text-[#0B2240] tracking-tight">
+          <h3 className="font-sans font-black text-2xl sm:text-3xl text-[#0B2C59] tracking-tight">
             Industries We Serve
           </h3>
           <p className="font-sans text-slate-500 text-xs sm:text-sm">
@@ -44,12 +44,12 @@ export default function IndustriesServed() {
           {INDUSTRIES_SERVED.map((industry) => (
             <div 
               key={industry.name}
-              className="group p-6 bg-slate-50 border border-slate-200/80 rounded-2xl hover:bg-[#0B2240] hover:border-[#0B2240] hover:shadow-lg text-center flex flex-col items-center justify-between space-y-4 transition-all duration-300"
+              className="group p-6 bg-slate-50 border border-slate-200/80 rounded-2xl hover:bg-[#0B2C59] hover:border-[#0B2C59] hover:shadow-lg text-center flex flex-col items-center justify-between space-y-4 transition-all duration-300"
             >
               <div className="p-3.5 bg-white rounded-2xl border border-slate-100 shadow-sm group-hover:bg-white/10 group-hover:border-white/15 transition-all">
                 {getIndustryIcon(industry.iconName)}
               </div>
-              <h4 className="font-sans font-black text-xs text-[#0B2240] group-hover:text-white transition-colors leading-tight">
+              <h4 className="font-sans font-black text-xs text-[#0B2C59] group-hover:text-white transition-colors leading-tight">
                 {industry.name}
               </h4>
             </div>

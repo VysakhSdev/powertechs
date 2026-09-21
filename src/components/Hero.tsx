@@ -10,8 +10,8 @@ import {
 } from '../assets/images';
 
 interface HeroProps {
-  onServicesClick: () => void;
-  onContactClick: () => void;
+  onServicesClick?: () => void;
+  onContactClick?: () => void;
 }
 
 const HERO_IMAGES = [
@@ -65,7 +65,7 @@ export default function Hero({ onServicesClick, onContactClick }: HeroProps) {
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:3rem_3rem] opacity-50" />
       
       {/* Soft gradient accents */}
-      <div className="absolute -top-40 right-0 w-96 h-96 bg-[#0B2240]/5 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute -top-40 right-0 w-96 h-96 bg-[#0B2C59]/5 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute top-1/2 left-0 w-80 h-80 bg-[#F2A900]/5 rounded-full blur-[80px] pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -77,7 +77,7 @@ export default function Hero({ onServicesClick, onContactClick }: HeroProps) {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-slate-200 shadow-sm text-[#0B2240] text-xs font-bold uppercase tracking-wider"
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-slate-200 shadow-sm text-[#0B2C59] text-xs font-bold uppercase tracking-wider"
             >
               <Zap className="w-4.5 h-4.5 fill-[#F2A900] text-[#F2A900]" />
               <span>Powertech Engineering Solution LLP</span>
@@ -87,7 +87,7 @@ export default function Hero({ onServicesClick, onContactClick }: HeroProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-sans font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-[42px] tracking-tight text-[#0B2240] leading-tight uppercase"
+              className="font-sans font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-[42px] tracking-tight text-[#0B2C59] leading-tight uppercase"
             >
               End-to-End Engineering Solutions for <span className="text-[#F2A900]">Reliable Electrical Systems</span>
             </motion.h1>
@@ -96,7 +96,7 @@ export default function Hero({ onServicesClick, onContactClick }: HeroProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.15 }}
-              className="font-sans font-black text-sm sm:text-base text-[#0B2240] uppercase tracking-wider"
+              className="font-sans font-black text-sm sm:text-base text-[#0B2C59] uppercase tracking-wider"
             >
               Delivering Innovation Across the Electrical Value Chain.
             </motion.p>
@@ -117,34 +117,12 @@ export default function Hero({ onServicesClick, onContactClick }: HeroProps) {
               transition={{ delay: 0.3 }}
               className="bg-white border-l-4 border-[#F2A900] p-4 rounded-r-xl shadow-sm"
             >
-              <p className="font-sans font-black text-[#0B2240] tracking-wide text-xs sm:text-sm uppercase">
+              <p className="font-sans font-black text-[#0B2C59] tracking-wide text-xs sm:text-sm uppercase">
                 "POWERING RELIABILITY &amp; DELIVERING EXCELLENCE"
               </p>
               <span className="text-slate-500 text-xs mt-0.5 block">Your reliable partner for comprehensive electrical services</span>
             </motion.div>
 
-            {/* Action Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-wrap gap-3 pt-2"
-            >
-              <button
-                onClick={onServicesClick}
-                className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#0B2240] hover:bg-[#0B2240]/90 text-white font-sans font-bold text-xs uppercase tracking-wider shadow-lg shadow-slate-900/10 transition-all hover:translate-y-[-2px] active:translate-y-[0px] cursor-pointer"
-              >
-                <span>Our Capabilities</span>
-                <ArrowRight className="w-4 h-4 stroke-[2.5]" />
-              </button>
-
-              <button
-                onClick={onContactClick}
-                className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white hover:bg-slate-100 text-[#0B2240] font-sans font-bold text-xs uppercase tracking-wider border border-slate-200 shadow-sm transition-all hover:translate-y-[-2px] active:translate-y-[0px] cursor-pointer"
-              >
-                <span>Contact Engineers</span>
-              </button>
-            </motion.div>
           </div>
 
           {/* Right Column: Premium Image Visual and overlay badges */}
@@ -206,7 +184,7 @@ export default function Hero({ onServicesClick, onContactClick }: HeroProps) {
 
                 {/* Floating Badge (Top Left) */}
                 <div className="absolute top-4 left-4 z-10 flex gap-2">
-                  <span className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-[#0B2240]/90 text-white font-sans text-[9px] font-bold uppercase tracking-wider border border-white/10 shadow-lg">
+                  <span className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-[#0B2C59]/90 text-white font-sans text-[9px] font-bold uppercase tracking-wider border border-white/10 shadow-lg">
                     <ShieldCheck className="w-3.5 h-3.5 text-[#F2A900]" />
                     {HERO_IMAGES[currentSlide].badge}
                   </span>
@@ -245,7 +223,7 @@ export default function Hero({ onServicesClick, onContactClick }: HeroProps) {
               <div className="grid grid-cols-3 gap-2 mt-4 pt-2 border-t border-slate-100 text-center">
                 <div className="p-2">
                   <p className="font-sans text-[9px] uppercase text-slate-400 font-bold tracking-wider">Capabilities</p>
-                  <p className="font-sans font-black text-xl text-[#0B2240] mt-0.5">20 +</p>
+                  <p className="font-sans font-black text-xl text-[#0B2C59] mt-0.5">20 +</p>
                 </div>
                 <div className="p-2 border-x border-slate-100">
                   <p className="font-sans text-[9px] uppercase text-slate-400 font-bold tracking-wider">Service Pillars</p>

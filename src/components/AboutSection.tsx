@@ -42,7 +42,7 @@ export default function AboutSection() {
   return (
     <div className="pt-24 pb-16 bg-white">
       {/* Hero Header */}
-      <section className="relative py-20 bg-[#0B2240] text-white overflow-hidden">
+      <section className="relative py-20 bg-[#0B2C59] text-white overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#132f54_1px,transparent_1px),linear-gradient(to_bottom,#132f54_1px,transparent_1px)] bg-[size:3rem_3rem] opacity-30 pointer-events-none" />
         <div className="absolute -top-40 -left-40 w-96 h-96 bg-[#F2A900]/10 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-[#F2A900]/10 rounded-full blur-[120px] pointer-events-none" />
@@ -72,7 +72,7 @@ export default function AboutSection() {
               <span className="font-sans text-xs font-black text-[#F2A900] uppercase tracking-widest block">
                 Our Genesis
               </span>
-              <h2 className="font-sans font-black text-3xl sm:text-4xl text-[#0B2240] tracking-tight">
+              <h2 className="font-sans font-black text-3xl sm:text-4xl text-[#0B2C59] tracking-tight">
                 Pioneering High-Voltage Electrical Infrastructure
               </h2>
               <div className="h-1 w-16 bg-[#F2A900]" />
@@ -86,11 +86,11 @@ export default function AboutSection() {
               <div className="pt-4 grid grid-cols-2 gap-4">
                 <div className="p-4 bg-slate-50 rounded-2xl border border-slate-100 flex items-center gap-3">
                   <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0" />
-                  <span className="font-sans text-xs font-bold text-[#0B2240]">CEA Statutory Compliant</span>
+                  <span className="font-sans text-xs font-bold text-[#0B2C59]">CEA Statutory Compliant</span>
                 </div>
                 <div className="p-4 bg-slate-50 rounded-2xl border border-slate-100 flex items-center gap-3">
                   <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0" />
-                  <span className="font-sans text-xs font-bold text-[#0B2240]">ISO 9001:2015 Standard</span>
+                  <span className="font-sans text-xs font-bold text-[#0B2C59]">ISO 9001:2015 Standard</span>
                 </div>
               </div>
             </div>
@@ -114,14 +114,14 @@ export default function AboutSection() {
               <div className="relative">
                 <div className="absolute inset-0 border border-slate-200 rounded-3xl translate-x-3 translate-y-3 pointer-events-none" />
                 <div className="relative bg-slate-50 p-8 rounded-3xl border border-slate-200 space-y-6 overflow-hidden">
-                  <div className="absolute top-0 right-0 p-8 text-[#0B2240]/5">
+                  <div className="absolute top-0 right-0 p-8 text-[#0B2C59]/5">
                     <Target className="w-32 h-32" />
                   </div>
                   <div className="space-y-2 relative z-10">
                     <span className="font-sans text-[11px] font-black text-[#F2A900] uppercase tracking-widest block">
                       Our Mission Statement
                     </span>
-                    <h3 className="font-sans font-black text-xl text-[#0B2240] tracking-tight">
+                    <h3 className="font-sans font-black text-xl text-[#0B2C59] tracking-tight">
                       Powering Reliability &amp; Delivering Excellence
                     </h3>
                     <p className="font-sans text-slate-600 text-xs sm:text-sm leading-relaxed">
@@ -132,7 +132,7 @@ export default function AboutSection() {
                     <span className="font-sans text-[11px] font-black text-[#F2A900] uppercase tracking-widest block">
                       Our Corporate Vision
                     </span>
-                    <h3 className="font-sans font-black text-xl text-[#0B2240] tracking-tight">
+                    <h3 className="font-sans font-black text-xl text-[#0B2C59] tracking-tight">
                       Your Reliable Electrical Partner
                     </h3>
                     <p className="font-sans text-slate-600 text-xs sm:text-sm leading-relaxed">
@@ -150,7 +150,7 @@ export default function AboutSection() {
               <span className="font-sans text-xs text-[#F2A900] font-black uppercase tracking-widest bg-[#F2A900]/10 border border-[#F2A900]/20 px-3.5 py-1.5 rounded-full">
                 Operating Pillars
               </span>
-              <h2 className="font-sans font-black text-3xl sm:text-4xl text-[#0B2240] tracking-tight">
+              <h2 className="font-sans font-black text-3xl sm:text-4xl text-[#0B2C59] tracking-tight">
                 Our Core Values
               </h2>
               <div className="h-1.5 w-16 bg-[#F2A900] mx-auto rounded-full" />
@@ -161,11 +161,11 @@ export default function AboutSection() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {values.map((v, i) => (
-                <div key={i} className="bg-slate-50 hover:bg-white p-6 rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-[#0B2240]/15 transition-all duration-300 space-y-4">
-                  <div className="p-3 bg-[#0B2240] text-white rounded-2xl w-fit shadow-md">
+                <div key={i} className="bg-slate-50 hover:bg-white p-6 rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-[#0B2C59]/15 transition-all duration-300 space-y-4">
+                  <div className="p-3 bg-[#0B2C59] text-white rounded-2xl w-fit shadow-md">
                     {v.icon}
                   </div>
-                  <h3 className="font-sans font-black text-base text-[#0B2240] tracking-tight">
+                  <h3 className="font-sans font-black text-base text-[#0B2C59] tracking-tight">
                     {v.title}
                   </h3>
                   <p className="font-sans text-xs text-slate-500 leading-relaxed">
@@ -179,11 +179,11 @@ export default function AboutSection() {
           {/* Corporate Field Operations & Project Showcase */}
           <div className="space-y-8">
             <div className="text-center max-w-2xl mx-auto space-y-3">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0B2240]/5 border border-[#0B2240]/10 text-xs font-bold text-[#0B2240]">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#0B2C59]/5 border border-[#0B2C59]/10 text-xs font-bold text-[#0B2C59]">
                 <Camera className="w-3.5 h-3.5 text-[#F2A900]" />
                 <span className="font-sans uppercase tracking-widest text-[10px]">Field Operations &amp; Projects</span>
               </div>
-              <h3 className="font-sans font-black text-2xl sm:text-3xl text-[#0B2240] tracking-tight">
+              <h3 className="font-sans font-black text-2xl sm:text-3xl text-[#0B2C59] tracking-tight">
                 Engineering In Action
               </h3>
               <p className="font-sans text-slate-500 text-xs sm:text-sm">
@@ -201,12 +201,12 @@ export default function AboutSection() {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent pointer-events-none" />
-                  <span className="absolute bottom-3 left-3 px-2.5 py-0.5 rounded-full bg-[#0B2240]/90 text-[#F2A900] text-[10px] font-bold uppercase tracking-wider">
+                  <span className="absolute bottom-3 left-3 px-2.5 py-0.5 rounded-full bg-[#0B2C59]/90 text-[#F2A900] text-[10px] font-bold uppercase tracking-wider">
                     EHV Switchyard
                   </span>
                 </div>
                 <div className="p-4 space-y-1.5">
-                  <h4 className="font-sans font-black text-xs text-[#0B2240]">Substation Engineering</h4>
+                  <h4 className="font-sans font-black text-xs text-[#0B2C59]">Substation Engineering</h4>
                   <p className="font-sans text-[11px] text-slate-500 leading-relaxed">
                     Turnkey 11kV/33kV/66kV/110kV switchyards with power transformer erection and busbar structures.
                   </p>
@@ -222,12 +222,12 @@ export default function AboutSection() {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent pointer-events-none" />
-                  <span className="absolute bottom-3 left-3 px-2.5 py-0.5 rounded-full bg-[#0B2240]/90 text-[#F2A900] text-[10px] font-bold uppercase tracking-wider">
+                  <span className="absolute bottom-3 left-3 px-2.5 py-0.5 rounded-full bg-[#0B2C59]/90 text-[#F2A900] text-[10px] font-bold uppercase tracking-wider">
                     HT/LT Switchgear
                   </span>
                 </div>
                 <div className="p-4 space-y-1.5">
-                  <h4 className="font-sans font-black text-xs text-[#0B2240]">Power Distribution</h4>
+                  <h4 className="font-sans font-black text-xs text-[#0B2C59]">Power Distribution</h4>
                   <p className="font-sans text-[11px] text-slate-500 leading-relaxed">
                     Custom modular switchgear panels, vacuum circuit breakers, and automated bus transfer schemes.
                   </p>
@@ -243,12 +243,12 @@ export default function AboutSection() {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent pointer-events-none" />
-                  <span className="absolute bottom-3 left-3 px-2.5 py-0.5 rounded-full bg-[#0B2240]/90 text-[#F2A900] text-[10px] font-bold uppercase tracking-wider">
+                  <span className="absolute bottom-3 left-3 px-2.5 py-0.5 rounded-full bg-[#0B2C59]/90 text-[#F2A900] text-[10px] font-bold uppercase tracking-wider">
                     Oil Filtration
                   </span>
                 </div>
                 <div className="p-4 space-y-1.5">
-                  <h4 className="font-sans font-black text-xs text-[#0B2240]">Transformer Maintenance</h4>
+                  <h4 className="font-sans font-black text-xs text-[#0B2C59]">Transformer Maintenance</h4>
                   <p className="font-sans text-[11px] text-slate-500 leading-relaxed">
                     High-vacuum oil dehydration, degassing, and BDV breakdown voltage restoration on live sites.
                   </p>
@@ -264,12 +264,12 @@ export default function AboutSection() {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent pointer-events-none" />
-                  <span className="absolute bottom-3 left-3 px-2.5 py-0.5 rounded-full bg-[#0B2240]/90 text-[#F2A900] text-[10px] font-bold uppercase tracking-wider">
+                  <span className="absolute bottom-3 left-3 px-2.5 py-0.5 rounded-full bg-[#0B2C59]/90 text-[#F2A900] text-[10px] font-bold uppercase tracking-wider">
                     Protection Testing
                   </span>
                 </div>
                 <div className="p-4 space-y-1.5">
-                  <h4 className="font-sans font-black text-xs text-[#0B2240]">Relay &amp; IS/IEC Calibration</h4>
+                  <h4 className="font-sans font-black text-xs text-[#0B2C59]">Relay &amp; IS/IEC Calibration</h4>
                   <p className="font-sans text-[11px] text-slate-500 leading-relaxed">
                     Calibrated secondary injection test sets, overcurrent/earth fault trip curve verification.
                   </p>
@@ -284,7 +284,7 @@ export default function AboutSection() {
               <span className="font-sans text-xs text-[#F2A900] font-black uppercase tracking-widest">
                 Our Journey
               </span>
-              <h3 className="font-sans font-black text-2xl sm:text-3xl text-[#0B2240] tracking-tight">
+              <h3 className="font-sans font-black text-2xl sm:text-3xl text-[#0B2C59] tracking-tight">
                 Key Corporate Milestones
               </h3>
               <p className="font-sans text-slate-500 text-xs sm:text-sm">
@@ -295,10 +295,10 @@ export default function AboutSection() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-4">
               {milestones.map((m, i) => (
                 <div key={i} className="relative bg-white p-6 rounded-2xl border border-slate-200 space-y-3">
-                  <div className="absolute -top-3.5 left-6 bg-[#0B2240] text-white px-3 py-1 rounded-full font-mono text-xs font-black shadow-md border border-[#F2A900]/20">
+                  <div className="absolute -top-3.5 left-6 bg-[#0B2C59] text-white px-3 py-1 rounded-full font-mono text-xs font-black shadow-md border border-[#F2A900]/20">
                     {m.year}
                   </div>
-                  <h4 className="font-sans font-black text-sm text-[#0B2240] pt-2 tracking-tight">
+                  <h4 className="font-sans font-black text-sm text-[#0B2C59] pt-2 tracking-tight">
                     {m.title}
                   </h4>
                   <p className="font-sans text-xs text-slate-500 leading-relaxed">
@@ -312,7 +312,7 @@ export default function AboutSection() {
           {/* Corporate Badges */}
           <div className="pt-8 border-t border-slate-100 flex flex-col md:flex-row items-center justify-between gap-8 bg-white p-4 rounded-3xl">
             <div className="space-y-2 text-center md:text-left">
-              <h4 className="font-sans font-black text-lg text-[#0B2240] tracking-tight">
+              <h4 className="font-sans font-black text-lg text-[#0B2C59] tracking-tight">
                 Ready to review our past industrial project portfolio?
               </h4>
               <p className="font-sans text-slate-500 text-xs">
@@ -320,13 +320,13 @@ export default function AboutSection() {
               </p>
             </div>
             <div className="flex flex-wrap gap-4 justify-center">
-              <span className="px-4 py-2 bg-[#0B2240]/5 border border-[#0B2240]/10 rounded-full font-sans text-xs font-bold text-[#0B2240] uppercase tracking-wider">
+              <span className="px-4 py-2 bg-[#0B2C59]/5 border border-[#0B2C59]/10 rounded-full font-sans text-xs font-bold text-[#0B2C59] uppercase tracking-wider">
                 Class-A Approved
               </span>
-              <span className="px-4 py-2 bg-[#0B2240]/5 border border-[#0B2240]/10 rounded-full font-sans text-xs font-bold text-[#0B2240] uppercase tracking-wider">
+              <span className="px-4 py-2 bg-[#0B2C59]/5 border border-[#0B2C59]/10 rounded-full font-sans text-xs font-bold text-[#0B2C59] uppercase tracking-wider">
                 ISO 9001:2015
               </span>
-              <span className="px-4 py-2 bg-[#0B2240]/5 border border-[#0B2240]/10 rounded-full font-sans text-xs font-bold text-[#0B2240] uppercase tracking-wider">
+              <span className="px-4 py-2 bg-[#0B2C59]/5 border border-[#0B2C59]/10 rounded-full font-sans text-xs font-bold text-[#0B2C59] uppercase tracking-wider">
                 CEA Certified
               </span>
             </div>
