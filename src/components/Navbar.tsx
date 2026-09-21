@@ -175,13 +175,13 @@ export default function Navbar({
               About Us
             </button>
             <button
-              onClick={() => handleLinkClick('services')}
+              // onClick={() => handleLinkClick('services')}
               className={getMobileLinkClass('services')}
             >
               Services
             </button>
             <button
-              onClick={() => handleLinkClick('contact')}
+              // onClick={() => handleLinkClick('contact')}
               className={getMobileLinkClass('contact')}
             >
               Contact Us
@@ -192,7 +192,7 @@ export default function Navbar({
                 <span>Powering Reliability &amp; Excellence</span>
               </div>
               <button
-                onClick={() => handleLinkClick('contact')}
+                // onClick={() => handleLinkClick('contact')}
                 className="flex items-center justify-center gap-2 w-full py-3 rounded-lg bg-[#F2A900] text-[#0B2C59] font-sans text-sm font-bold shadow-md hover:bg-[#F2A900]/90 transition-colors"
               >
                 <PhoneCall className="w-4 h-4" />
