@@ -175,7 +175,7 @@ export default function Navbar({
               About Us
             </button>
             <button
-              // onClick={() => handleLinkClick('services')}
+              onClick={() => handleLinkClick('services')}
               className={getMobileLinkClass('services')}
             >
               Services
