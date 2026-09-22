@@ -106,7 +106,7 @@ export default function Navbar({
               About Us
             </button>
             <button
-              // onClick={() => handlePageChange('services')}
+              onClick={() => handlePageChange('services')}
               className={getLinkClass('services')}
             >
               Services
