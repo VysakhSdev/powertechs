@@ -111,12 +111,12 @@ export default function ServicesSection({ id = 'services-section', onInquireServ
             </div>
 
             {/* Total Indicator */}
-            <div className="flex items-center gap-2 shrink-0">
+            {/* <div className="flex items-center gap-2 shrink-0">
               <SlidersHorizontal className="w-4 h-4 text-[#0B2C59]/60" />
               <span className="font-sans text-xs font-bold text-slate-600 bg-slate-100 px-3 py-1.5 rounded-xl border border-slate-200">
                 Found {filteredServices.length} of {ALL_SERVICES.length} Services
               </span>
-            </div>
+            </div> */}
           </div>
 
           {/* Category Tabs */}
