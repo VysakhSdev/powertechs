@@ -92,10 +92,10 @@ export default function Footer({ setActivePage }: FooterProps) {
                   <Mail className="w-3.5 h-3.5 text-[#F2A900] shrink-0" />
                   <span className="text-slate-300">info@powertecheng.co.in</span>
                 </div>
-                <div className="flex items-center gap-2">
+                {/* <div className="flex items-center gap-2">
                   <Globe className="w-3.5 h-3.5 text-[#F2A900] shrink-0" />
                   <span className="text-slate-300">www.powertecheng.co.in</span>
-                </div>
+                </div> */}
               </li>
               <li className="pt-1.5 space-y-1">
                 <span className="text-[10px] uppercase font-bold text-[#F2A900] block">Office Address</span>

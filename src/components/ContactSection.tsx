@@ -1,10 +1,29 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'motion/react';
-import { Mail, Phone, MapPin, CheckCircle, Send, BadgeCheck, Clock } from 'lucide-react';
-import { imgRelayTesting } from '../assets/images';
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { CheckCircle, Send, BadgeCheck, Clock } from "lucide-react";
+import { imgRelayTesting } from "../assets/images";
+
+export interface ContactFormData {
+  fullName: string;
+  email: string;
+  phone: string;
+  companyName: string;
+  message: string;
+}
+
+type FormErrors = Partial<Record<keyof ContactFormData, string>>;
+
+interface SubmittedContactSummary {
+  fullName: string;
+  email: string;
+  phone: string;
+  companyName: string;
+}
 
 interface ContactSectionProps {
   id?: string;
+  /** Optional override for your SheetMonkey Form Endpoint URL */
+  sheetMonkeyUrl?: string;
   selectedPlanData: {
     sector: string;
     voltage: string;
@@ -13,92 +32,148 @@ interface ContactSectionProps {
   } | null;
 }
 
-export default function ContactSection({ id = 'contact-section', selectedPlanData }: ContactSectionProps) {
-  // Form States
-  const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    phone: '',
-    companyName: '',
-    sector: 'Industrial / Manufacturing',
-    voltage: 'High Tension',
-    focus: 'Safety Audits & Compliance',
-    message: '',
-    servicesListText: ''
-  });
+const createInitialFormData = (): ContactFormData => ({
+  fullName: "",
+  email: "",
+  phone: "",
+  companyName: "",
+  message: "",
+});
 
-  // Validation States
-  const [errors, setErrors] = useState<Record<string, string>>({});
+const SHEET_MONKEY_ENDPOINT_URL = import.meta.env.VITE_SHEET_MONKEY_ENDPOINT_URL;
+
+export default function ContactSection({
+  id = "contact-section",
+  sheetMonkeyUrl,
+  selectedPlanData,
+}: ContactSectionProps) {
+  const [formData, setFormData] = useState<ContactFormData>(
+    createInitialFormData,
+  );
+
+  const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [submittedContact, setSubmittedContact] =
+    useState<SubmittedContactSummary | null>(null);
 
   // Sync inputs when selectedPlanData changes
   useEffect(() => {
     if (selectedPlanData) {
-      setFormData(prev => ({
+      setFormData((prev) => ({
         ...prev,
-        sector: selectedPlanData.sector,
-        voltage: selectedPlanData.voltage,
-        focus: selectedPlanData.focus,
-        servicesListText: selectedPlanData.recommendedServices.join('\n'),
-        message: `Architect Recommended Solutions:\n${selectedPlanData.recommendedServices.map((s, idx) => `[${idx+1}] ${s}`).join('\n')}\n\nPlease analyze our ${selectedPlanData.voltage} network requirements.`
+        message: `Architect Recommended Solutions:\n${selectedPlanData.recommendedServices
+          .map((s, idx) => `[${idx + 1}]${s}`)
+          .join(
+            "\n",
+          )}\n\nPlease analyze our ${selectedPlanData.voltage} network requirements for the ${
+          selectedPlanData.sector
+        } sector.`,
       }));
     }
   }, [selectedPlanData]);
 
   // Handle Input Changes
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-    if (errors[name]) {
-      setErrors(prev => {
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (errors[name as keyof ContactFormData]) {
+      setErrors((prev) => {
         const newErrs = { ...prev };
-        delete newErrs[name];
+        delete newErrs[name as keyof ContactFormData];
         return newErrs;
       });
     }
   };
 
   // Form Validation
-  const validateForm = () => {
-    const newErrors: Record<string, string> = {};
-    if (!formData.fullName.trim()) newErrors.fullName = 'Full Name is required.';
+  const validateForm = (): boolean => {
+    const newErrors: FormErrors = {};
+    if (!formData.fullName.trim())
+      newErrors.fullName = "Full Name is required.";
     if (!formData.email.trim()) {
-      newErrors.email = 'Corporate Email is required.';
+      newErrors.email = "Corporate Email is required.";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Please provide a valid corporate email.';
+      newErrors.email = "Please provide a valid corporate email.";
     }
     if (!formData.phone.trim()) {
-      newErrors.phone = 'Phone number is required.';
+      newErrors.phone = "Phone number is required.";
     } else if (!/^[0-9+\s-]{8,15}$/.test(formData.phone.trim())) {
-      newErrors.phone = 'Please provide a valid contact number.';
+      newErrors.phone = "Please provide a valid contact number.";
     }
-    if (!formData.companyName.trim()) newErrors.companyName = 'Company name is required.';
-    
+    if (!formData.companyName.trim())
+      newErrors.companyName = "Company name is required.";
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  // Submit Handler
-  const handleSubmit = (e: React.FormEvent) => {
+  // Submit Handler for SheetMonkey API
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!validateForm()) return;
 
+    const endpoint = sheetMonkeyUrl ?? SHEET_MONKEY_ENDPOINT_URL;
+
+    if (!endpoint || endpoint.includes("YOUR_FORM_ID")) {
+      setSubmitError("Please configure your SheetMonkey endpoint URL.");
+      return;
+    }
+
     setIsSubmitting(true);
-    
-    // Simulate API request
-    setTimeout(() => {
+    setSubmitError(null);
+
+    try {
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+"Date": new Date().toLocaleString(),
+          "Full Name": formData.fullName,
+          Email: formData.email,
+          Phone: formData.phone,
+          "Company Name": formData.companyName,
+          Message: formData.message,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(
+          `SheetMonkey request failed with status ${response.status}`,
+        );
+      }
+
+      setSubmittedContact({
+        fullName: formData.fullName,
+        email: formData.email,
+        phone: formData.phone,
+        companyName: formData.companyName,
+      });
+      setFormData(createInitialFormData());
       setIsSubmitting(false);
       setIsSuccess(true);
-    }, 1200);
+    } catch (error) {
+      console.error("SheetMonkey submission error:", error);
+      setSubmitError(
+        "We could not send your request to SheetMonkey. Please try again.",
+      );
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <section id={id} className="py-20 bg-white text-slate-950 relative scroll-mt-20">
+    <section
+      id={id}
+      className="py-20 bg-white text-slate-950 relative scroll-mt-20"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          
           {/* Left Column: Contact Corporate Info & Trust badges */}
           <div className="lg:col-span-5 space-y-8">
             <div className="space-y-4">
@@ -109,71 +184,29 @@ export default function ContactSection({ id = 'contact-section', selectedPlanDat
                 Request an Engineering Consultation
               </h2>
               <p className="font-sans text-slate-600 text-sm sm:text-base leading-relaxed">
-                Connect with our certified electrical engineering consultants. We provide detailed feasibility studies, system audits, and comprehensive deployment proposals for utilities, industries, and institutions.
+                Connect with our certified electrical engineering consultants.
+                We provide detailed feasibility studies, system audits, and
+                comprehensive deployment proposals for utilities, industries,
+                and institutions.
               </p>
             </div>
 
             {/* Supporting Contact Image */}
             <div className="relative rounded-2xl overflow-hidden shadow border border-slate-200 h-48 sm:h-52">
-              <img 
-                src={imgRelayTesting} 
-                alt="Support, Relay Calibration and Maintenance Operations" 
+              <img
+                src={imgRelayTesting}
+                alt="Support, Relay Calibration and Maintenance Operations"
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none" />
               <div className="absolute bottom-3 left-4 right-4 text-white">
-                <span className="text-[10px] uppercase font-bold tracking-widest text-slate-300">Fast-response helpline</span>
-                <p className="text-xs font-black text-white">Round-the-clock Emergency Engineering Desk</p>
-              </div>
-            </div>
-
-            {/* Direct Contact info */}
-            <div className="space-y-4 bg-slate-50 p-6 rounded-2xl border border-slate-200">
-              <p className="font-sans text-[11px] font-black text-[#0B2C59]/60 uppercase tracking-widest">
-                Corporate Office
-              </p>
-              
-              <div className="space-y-4">
-                <div className="flex items-start gap-3.5">
-                  <MapPin className="w-5 h-5 text-[#F2A900] shrink-0 mt-0.5" />
-                  <div>
-                    <h4 className="font-sans font-black text-xs text-[#0B2C59]">Registered Office Address</h4>
-                    <p className="font-sans text-xs text-slate-600 mt-1 leading-relaxed">
-                      <strong>Powertech Engineering Solution LLP</strong><br />
-                      B.No - 23/112/C7, Paul's Corner Building<br />
-                      Near Govt. ITI, HMT Road, Kalamassery (P.O)<br />
-                      Ernakulam – 683104, Kerala, India
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3.5">
-                  <Phone className="w-5 h-5 text-[#F2A900] shrink-0 mt-0.5" />
-                  <div>
-                    <h4 className="font-sans font-black text-xs text-[#0B2C59]">Support & Contact Numbers</h4>
-                    <div className="font-sans text-xs text-slate-600 mt-1 space-y-0.5">
-                      <p>+91 98463 41472</p>
-                      <p>+91 94463 67886</p>
-                      <p>+91 75589 46983</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3.5">
-                  <Mail className="w-5 h-5 text-[#F2A900] shrink-0 mt-0.5" />
-                  <div>
-                    <h4 className="font-sans font-black text-xs text-[#0B2C59]">Email & Official Website</h4>
-                    <p className="font-sans text-xs text-slate-600 mt-1">
-                      info@powertecheng.co.in
-                    </p>
-                    <p className="font-sans text-xs text-[#0B2C59] font-semibold mt-0.5">
-                      <a href="https://www.powertecheng.co.in" target="_blank" rel="noreferrer" className="hover:text-[#F2A900] underline">
-                        www.powertecheng.co.in
-                      </a>
-                    </p>
-                  </div>
-                </div>
+                <span className="text-[10px] uppercase font-bold tracking-widest text-slate-300">
+                  Fast-response helpline
+                </span>
+                <p className="text-xs font-black text-white">
+                  Round-the-clock Emergency Engineering Desk
+                </p>
               </div>
             </div>
 
@@ -182,16 +215,24 @@ export default function ContactSection({ id = 'contact-section', selectedPlanDat
               <div className="p-4 border border-slate-200 rounded-2xl bg-slate-50/50 flex items-start gap-2.5">
                 <BadgeCheck className="w-5 h-5 text-[#F2A900] shrink-0" />
                 <div>
-                  <h5 className="font-sans font-bold text-xs text-[#0B2C59]">Certified</h5>
-                  <p className="font-sans text-[10px] text-slate-500 mt-0.5">CEA Licensed Grid Engineers</p>
+                  <h5 className="font-sans font-bold text-xs text-[#0B2C59]">
+                    Certified
+                  </h5>
+                  <p className="font-sans text-[10px] text-slate-500 mt-0.5">
+                    CEA Licensed Grid Engineers
+                  </p>
                 </div>
               </div>
 
               <div className="p-4 border border-slate-200 rounded-2xl bg-slate-50/50 flex items-start gap-2.5">
                 <Clock className="w-5 h-5 text-[#F2A900] shrink-0" />
                 <div>
-                  <h5 className="font-sans font-bold text-xs text-[#0B2C59]">Turnaround</h5>
-                  <p className="font-sans text-[10px] text-slate-500 mt-0.5">Scoping Call in 2 Hours</p>
+                  <h5 className="font-sans font-bold text-xs text-[#0B2C59]">
+                    Turnaround
+                  </h5>
+                  <p className="font-sans text-[10px] text-slate-500 mt-0.5">
+                    Scoping Call in 2 Hours
+                  </p>
                 </div>
               </div>
             </div>
@@ -201,7 +242,7 @@ export default function ContactSection({ id = 'contact-section', selectedPlanDat
           <div className="lg:col-span-7">
             <div className="bg-white rounded-3xl border border-slate-200 shadow-xl p-6 md:p-8 relative">
               <div className="absolute top-0 left-10 right-10 h-1 bg-[#F2A900] rounded-full" />
-              
+
               {/* Highlight bar if plan synchronized */}
               {selectedPlanData && !isSuccess && (
                 <div className="mb-6 p-4 rounded-xl bg-[#F2A900]/10 border border-[#F2A900]/30 flex items-center justify-between text-xs text-slate-800">
@@ -220,6 +261,14 @@ export default function ContactSection({ id = 'contact-section', selectedPlanDat
               {/* Form Content */}
               {!isSuccess ? (
                 <form onSubmit={handleSubmit} className="space-y-5">
+                  {submitError && (
+                    <div
+                      role="alert"
+                      className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 font-sans text-xs text-red-700"
+                    >
+                      {submitError}
+                    </div>
+                  )}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {/* Full Name */}
                     <div className="space-y-1">
@@ -233,11 +282,15 @@ export default function ContactSection({ id = 'contact-section', selectedPlanDat
                         onChange={handleChange}
                         placeholder="John Doe"
                         className={`w-full p-3 rounded-xl border bg-white font-sans text-xs focus:ring-4 focus:ring-[#0B2C59]/5 focus:border-[#0B2C59] outline-none transition-all ${
-                          errors.fullName ? 'border-red-500' : 'border-slate-200'
+                          errors.fullName
+                            ? "border-red-500"
+                            : "border-slate-200"
                         }`}
                       />
                       {errors.fullName && (
-                        <p className="font-sans text-[10px] text-red-500 mt-0.5 pl-1">{errors.fullName}</p>
+                        <p className="font-sans text-[10px] text-red-500 mt-0.5 pl-1">
+                          {errors.fullName}
+                        </p>
                       )}
                     </div>
 
@@ -253,11 +306,13 @@ export default function ContactSection({ id = 'contact-section', selectedPlanDat
                         onChange={handleChange}
                         placeholder="john@company.com"
                         className={`w-full p-3 rounded-xl border bg-white font-sans text-xs focus:ring-4 focus:ring-[#0B2C59]/5 focus:border-[#0B2C59] outline-none transition-all ${
-                          errors.email ? 'border-red-500' : 'border-slate-200'
+                          errors.email ? "border-red-500" : "border-slate-200"
                         }`}
                       />
                       {errors.email && (
-                        <p className="font-sans text-[10px] text-red-500 mt-0.5 pl-1">{errors.email}</p>
+                        <p className="font-sans text-[10px] text-red-500 mt-0.5 pl-1">
+                          {errors.email}
+                        </p>
                       )}
                     </div>
                   </div>
@@ -275,11 +330,13 @@ export default function ContactSection({ id = 'contact-section', selectedPlanDat
                         onChange={handleChange}
                         placeholder="+91 XXXXX XXXXX"
                         className={`w-full p-3 rounded-xl border bg-white font-sans text-xs focus:ring-4 focus:ring-[#0B2C59]/5 focus:border-[#0B2C59] outline-none transition-all ${
-                          errors.phone ? 'border-red-500' : 'border-slate-200'
+                          errors.phone ? "border-red-500" : "border-slate-200"
                         }`}
                       />
                       {errors.phone && (
-                        <p className="font-sans text-[10px] text-red-500 mt-0.5 pl-1">{errors.phone}</p>
+                        <p className="font-sans text-[10px] text-red-500 mt-0.5 pl-1">
+                          {errors.phone}
+                        </p>
                       )}
                     </div>
 
@@ -295,67 +352,16 @@ export default function ContactSection({ id = 'contact-section', selectedPlanDat
                         onChange={handleChange}
                         placeholder="Industrial Enterprises Ltd."
                         className={`w-full p-3 rounded-xl border bg-white font-sans text-xs focus:ring-4 focus:ring-[#0B2C59]/5 focus:border-[#0B2C59] outline-none transition-all ${
-                          errors.companyName ? 'border-red-500' : 'border-slate-200'
+                          errors.companyName
+                            ? "border-red-500"
+                            : "border-slate-200"
                         }`}
                       />
                       {errors.companyName && (
-                        <p className="font-sans text-[10px] text-red-500 mt-0.5 pl-1">{errors.companyName}</p>
+                        <p className="font-sans text-[10px] text-red-500 mt-0.5 pl-1">
+                          {errors.companyName}
+                        </p>
                       )}
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    {/* Sector */}
-                    <div className="space-y-1">
-                      <label className="font-sans text-[10px] font-black uppercase tracking-wider text-slate-500 pl-1 block">
-                        Sector Focus
-                      </label>
-                      <select
-                        name="sector"
-                        value={formData.sector}
-                        onChange={handleChange}
-                        className="w-full p-3 rounded-xl border border-slate-200 bg-white font-sans text-xs focus:ring-4 focus:ring-[#0B2C59]/5 focus:border-[#0B2C59] outline-none transition-all cursor-pointer"
-                      >
-                        <option>Industrial / Manufacturing</option>
-                        <option>Utility / Grid Operator</option>
-                        <option>EV Fleet / Charge Operator</option>
-                        <option>Commercial / Institutional</option>
-                      </select>
-                    </div>
-
-                    {/* Voltage level */}
-                    <div className="space-y-1">
-                      <label className="font-sans text-[10px] font-black uppercase tracking-wider text-slate-500 pl-1 block">
-                        Voltage Spectrum
-                      </label>
-                      <select
-                        name="voltage"
-                        value={formData.voltage}
-                        onChange={handleChange}
-                        className="w-full p-3 rounded-xl border border-slate-200 bg-white font-sans text-xs focus:ring-4 focus:ring-[#0B2C59]/5 focus:border-[#0B2C59] outline-none transition-all cursor-pointer"
-                      >
-                        <option>Extra High Voltage</option>
-                        <option>High Tension</option>
-                        <option>Low Tension</option>
-                      </select>
-                    </div>
-
-                    {/* Focus Goal */}
-                    <div className="space-y-1">
-                      <label className="font-sans text-[10px] font-black uppercase tracking-wider text-slate-500 pl-1 block">
-                        Project Interest
-                      </label>
-                      <select
-                        name="focus"
-                        value={formData.focus}
-                        onChange={handleChange}
-                        className="w-full p-3 rounded-xl border border-slate-200 bg-white font-sans text-xs focus:ring-4 focus:ring-[#0B2C59]/5 focus:border-[#0B2C59] outline-none transition-all cursor-pointer"
-                      >
-                        <option>Concept Design & Approval</option>
-                        <option>Safety Audits & Compliance</option>
-                        <option>Preventive testing & AMC</option>
-                        <option>Full Turnkey Execution</option>
-                      </select>
                     </div>
                   </div>
 
@@ -376,7 +382,9 @@ export default function ContactSection({ id = 'contact-section', selectedPlanDat
 
                   {/* Privacy reminder */}
                   <p className="font-sans text-[10px] text-slate-400 leading-normal">
-                    🔒 By submitting this form, you authorize Powertech Engineering Solution LLP to contact you via telephone or email to schedule the initial technical scoping conference.
+                    🔒 By submitting this form, you authorize Powertech
+                    Engineering Solution LLP to contact you via telephone or
+                    email to schedule the initial technical scoping conference.
                   </p>
 
                   {/* Action button */}
@@ -388,95 +396,104 @@ export default function ContactSection({ id = 'contact-section', selectedPlanDat
                     {isSubmitting ? (
                       <>
                         <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                        <span>Verifying Scoping File...</span>
+                        <span>Loading.....</span>
                       </>
                     ) : (
                       <>
                         <Send className="w-4 h-4 text-[#F2A900]" />
-                        <span>Submit Corporate Request</span>
+                        <span>Submit</span>
                       </>
                     )}
                   </button>
-
                 </form>
               ) : (
                 /* Success Screen */
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
+                  role="status"
+                  aria-live="polite"
                   className="text-center py-6 space-y-6"
                 >
                   <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto shadow-inner">
                     <CheckCircle className="w-10 h-10" />
                   </div>
-                  
+
                   <div className="space-y-2">
                     <h3 className="font-sans font-black text-2xl text-[#0B2C59] tracking-tight">
-                      Inquiry Scoping Completed
+                      Inquiry Completed
                     </h3>
                     <p className="font-sans text-xs text-slate-600 max-w-md mx-auto leading-relaxed">
-                      Thank you, <strong className="text-slate-900 font-bold">{formData.fullName}</strong>. Your {formData.voltage} system audit request has been logged on behalf of <strong className="text-slate-900 font-extrabold">{formData.companyName}</strong>.
+                      Thank you,{" "}
+                      <strong className="text-slate-900 font-bold">
+                        {submittedContact?.fullName}
+                      </strong>
+                      . Your consultation request has been logged on behalf of{" "}
+                      <strong className="text-slate-900 font-extrabold">
+                        {submittedContact?.companyName}
+                      </strong>
+                      .
                     </p>
                   </div>
 
                   {/* Visual Scoping Ticket details */}
                   <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5 max-w-md mx-auto text-left space-y-3 shadow-inner">
-                    <div className="flex items-center justify-between text-[11px] font-mono text-slate-500 pb-2 border-b border-slate-200">
-                      <span>Ref Ticket ID:</span>
-                      <span className="font-black text-[#0B2C59]">#PT-{(Math.floor(Math.random() * 9000) + 1000).toString()}</span>
-                    </div>
-                    
                     <div className="grid grid-cols-2 gap-y-3 gap-x-2 text-xs">
                       <div>
-                        <span className="text-slate-500 block text-[10px] uppercase font-bold">Department:</span>
-                        <span className="font-extrabold text-[#0B2C59]">{formData.focus}</span>
+                        <span className="text-slate-500 block text-[10px] uppercase font-bold">
+                          Company Name:
+                        </span>
+                        <span className="font-extrabold text-[#0B2C59]">
+                          {submittedContact?.companyName}
+                        </span>
                       </div>
                       <div>
-                        <span className="text-slate-500 block text-[10px] uppercase font-bold">Corporate Email:</span>
-                        <span className="font-extrabold text-slate-800 break-all">{formData.email}</span>
+                        <span className="text-slate-500 block text-[10px] uppercase font-bold">
+                          Corporate Email:
+                        </span>
+                        <span className="font-extrabold text-slate-800 break-all">
+                          {submittedContact?.email}
+                        </span>
                       </div>
                       <div>
-                        <span className="text-slate-500 block text-[10px] uppercase font-bold">Contact Phone:</span>
-                        <span className="font-extrabold text-slate-800">{formData.phone}</span>
+                        <span className="text-slate-500 block text-[10px] uppercase font-bold">
+                          Contact Phone:
+                        </span>
+                        <span className="font-extrabold text-slate-800">
+                          {submittedContact?.phone}
+                        </span>
                       </div>
                       <div>
-                        <span className="text-slate-500 block text-[10px] uppercase font-bold">Response SLA:</span>
-                        <span className="font-mono font-extrabold text-[#F2A900] bg-[#0B2C59] px-2 py-0.5 rounded-full inline-block text-[10px]">2 Hour Callback</span>
+                        <span className="text-slate-500 block text-[10px] uppercase font-bold">
+                          Response SLA:
+                        </span>
+                        <span className="font-mono font-extrabold text-[#F2A900] bg-[#0B2C59] px-2 py-0.5 rounded-full inline-block text-[10px]">
+                          2 Hour Callback
+                        </span>
                       </div>
                     </div>
                   </div>
 
                   <p className="font-sans text-xs text-slate-500 max-w-sm mx-auto leading-relaxed">
-                    Our lead corporate grid engineer is reviewing your system telemetry message. We will reach out to you within the next 2 hours.
+                    Our team is reviewing your message. We will reach out to you
+                    within the next few hours.
                   </p>
 
                   <button
                     onClick={() => {
                       setIsSuccess(false);
-                      setFormData({
-                        fullName: '',
-                        email: '',
-                        phone: '',
-                        companyName: '',
-                        sector: 'Industrial / Manufacturing',
-                        voltage: 'High Tension',
-                        focus: 'Safety Audits & Compliance',
-                        message: '',
-                        servicesListText: ''
-                      });
+                      setSubmittedContact(null);
+                      setSubmitError(null);
                     }}
                     className="px-6 py-2.5 rounded-xl bg-[#0B2C59] hover:bg-[#0B2C59]/90 text-white font-sans text-xs font-bold uppercase tracking-wider transition-all cursor-pointer"
                   >
-                    Submit Another Scoping File
+                    Submit Another Request
                   </button>
                 </motion.div>
               )}
-
             </div>
           </div>
-
         </div>
-
       </div>
     </section>
   );

@@ -112,7 +112,7 @@ export default function Navbar({
               Services
             </button>
             <button
-              // onClick={() => handlePageChange('contact')}
+              onClick={() => handlePageChange('contact')}
               className={getLinkClass('contact')}
             >
               Contact Us
@@ -128,7 +128,7 @@ export default function Navbar({
               </span>
             </div>
             <button
-              // onClick={() => handlePageChange('contact')}
+              onClick={() => handlePageChange('contact')}
               id="cta-consult-btn"
               className={`flex items-center gap-2 px-4 py-2.5 rounded-lg font-sans text-xs font-bold tracking-wide uppercase transition-all shadow-md active:translate-y-[1px] cursor-pointer ${
                 isScrolled
@@ -181,7 +181,7 @@ export default function Navbar({
               Services
             </button>
             <button
-              // onClick={() => handleLinkClick('contact')}
+              onClick={() => handleLinkClick('contact')}
               className={getMobileLinkClass('contact')}
             >
               Contact Us
@@ -192,7 +192,7 @@ export default function Navbar({
                 <span>Powering Reliability &amp; Excellence</span>
               </div>
               <button
-                // onClick={() => handleLinkClick('contact')}
+                onClick={() => handleLinkClick('contact')}
                 className="flex items-center justify-center gap-2 w-full py-3 rounded-lg bg-[#F2A900] text-[#0B2C59] font-sans text-sm font-bold shadow-md hover:bg-[#F2A900]/90 transition-colors"
               >
                 <PhoneCall className="w-4 h-4" />
