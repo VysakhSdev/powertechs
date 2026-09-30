@@ -212,9 +212,9 @@ export default function ServicesSection({ id = 'services-section', onInquireServ
 
                 {/* Card Action footer */}
                 <div className="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between">
-                  <span className="font-mono text-[10px] font-bold text-[#0B2C59]/40">
+                  {/* <span className="font-mono text-[10px] font-bold text-[#0B2C59]/40">
                     CODE PW-{service.id.toUpperCase()}
-                  </span>
+                  </span> */}
                   {onInquireService ? (
                     <button
                       onClick={() => onInquireService(service.title)}
