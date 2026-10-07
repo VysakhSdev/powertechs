@@ -17,7 +17,7 @@ const PowertechLogo = ({ isDarkBg }: { isDarkBg: boolean }) => {
       <img
         src={logoSrc}
         alt="Powertech logo"
-        className="h-15 w-auto object-contain transition-all duration-300 md:h-15"
+        className="h-auto w-[220px] object-contain transition-all duration-300 md:w-[250px]"
       />
     </div>
   );

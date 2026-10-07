@@ -5,7 +5,7 @@ import whiteLogo from '../assets/images/whiteLogo.png';
 // Footer logo only - no text branding, use the uploaded white logo asset
 const PowertechLogo = () => (
   <div className="flex items-center">
-    <img src={whiteLogo} alt="Powertech logo" className="h-15 w-auto object-contain md:h-15" />
+    <img src={whiteLogo} alt="Powertech logo" className="h-auto w-[220px] object-contain md:w-[250px]" />
   </div>
 );
 
